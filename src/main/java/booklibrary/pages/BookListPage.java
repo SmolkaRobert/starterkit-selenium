@@ -11,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import booklibrary.abstracts.AbstractPageObject;
 import booklibrary.rows.BookTableRow;
+import booklibrary.utils.ButtonUtils;
 
 public class BookListPage extends AbstractPageObject {
 	@FindBy(id = "book-add-button")
@@ -37,6 +38,10 @@ public class BookListPage extends AbstractPageObject {
 		bookSearchButton.click();
 		updateBooksSearchResult();
 		return this;
+	}
+	
+	public boolean isBookSearchButtonClickable() {
+		return ButtonUtils.isWebElementClickable(bookSearchButton);
 	}
 
 	private void updateBooksSearchResult() {

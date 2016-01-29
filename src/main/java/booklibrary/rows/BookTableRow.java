@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import booklibrary.pages.BookEditPage;
+import booklibrary.utils.ButtonUtils;
 
 public class BookTableRow {
 	private WebDriver driver;
@@ -34,8 +35,16 @@ public class BookTableRow {
 		deleteBookButton.click();
 	}
 	
+	public boolean isDeleteBookButtonClickable() {
+		return ButtonUtils.isWebElementClickable(deleteBookButton);
+	}
+	
 	public BookEditPage clickEditBookButton() {
 		editBookButton.click();
 		return PageFactory.initElements(driver, BookEditPage.class);
+	}
+	
+	public boolean isEditBookButtonClickable() {
+		return ButtonUtils.isWebElementClickable(editBookButton);
 	}
 }

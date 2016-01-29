@@ -11,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import booklibrary.abstracts.AbstractPageObject;
 import booklibrary.rows.AuthorTableRow;
+import booklibrary.utils.ButtonUtils;
 
 public class BookAddPage extends AbstractPageObject {
 	@FindBy(id="book-add-title")
@@ -26,19 +27,6 @@ public class BookAddPage extends AbstractPageObject {
 	public BookAddPage(WebDriver driver) {
 		super(driver);
 		updateAuthors();
-	}
-	
-	public AddNextAuthorPage clickAddNextAuthorButton() {
-		addNextAuthorButton.click();
-		return PageFactory.initElements(driver, AddNextAuthorPage.class);
-	}
-	
-	public boolean isPossibleToAddNextAuthor(){
-		return addNextAuthorButton.isEnabled();
-	}
-	
-	public void clickSaveBookButton(){
-		saveBookButton.click();
 	}
 
 	public BookAddPage setTitle(String title) {
@@ -66,5 +54,18 @@ public class BookAddPage extends AbstractPageObject {
 			authors.add(new AuthorTableRow(singleRow.findElement(By.id("first-name")),
 					singleRow.findElement(By.id("last-name"))));
 		}
+	}
+	
+	public AddNextAuthorPage clickAddNextAuthorButton() {
+		addNextAuthorButton.click();
+		return PageFactory.initElements(driver, AddNextAuthorPage.class);
+	}
+	
+	public boolean isPossibleToAddNextAuthor(){
+		return ButtonUtils.isWebElementClickable(addNextAuthorButton);
+	}
+	
+	public void clickSaveBookButton(){
+		saveBookButton.click();
 	}
 }

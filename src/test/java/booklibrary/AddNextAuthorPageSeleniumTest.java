@@ -1,7 +1,5 @@
 package booklibrary;
 
-import static org.junit.Assert.assertTrue;
-
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;

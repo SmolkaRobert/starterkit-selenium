@@ -7,10 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import booklibrary.abstracts.AbstractSelenium;
+import booklibrary.pages.BookAddPage;
 import booklibrary.pages.BookListPage;
 import booklibrary.rows.BookTableRow;
 
-public class BookListSeleniumTest extends AbstractSelenium {
+public class BookListPageSeleniumTest extends AbstractSelenium {
 
 	private static final String ALL_BOOKS = "";
 	private static final String SEARCHED_TITLE_PREFIX = "p";
@@ -38,7 +39,7 @@ public class BookListSeleniumTest extends AbstractSelenium {
 	}
 
 	@Test
-	public void shouldCheckIfSearchTextCanBeFiiled() {
+	public void shouldCheckIfSearchTextCanBeFiled() {
 		// given
 		String titleQuery = SEARCHED_TITLE_PREFIX;
 		// when
@@ -47,6 +48,15 @@ public class BookListSeleniumTest extends AbstractSelenium {
 		// then
 		Assertions.assertThat(bookListPage.isBookSearchButtonClickable()).isTrue();
 		Assertions.assertThat(foundBooks).isNotNull().isNotEmpty();
+	}
+	
+	@Test
+	public void shouldCheckIfAddBookCanBeClicked() {
+		// given
+		// when
+		BookAddPage bookAddPage = bookListPage.clickBookAddButton();
+		// then
+		Assertions.assertThat(bookAddPage).isNotNull();
 	}
 	
 	@Test
